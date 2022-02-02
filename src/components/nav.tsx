@@ -29,6 +29,10 @@ const Nav = () => (
       <Link href="/notes">
         <a sx={{ color: 'text', fontSize: 3, cursor: 'pointer' }}>notes</a>
       </Link>
+
+      <Link href="/posts">
+        <a sx={{ color: 'text', fontSize: 3, cursor: 'pointer' }}>posts</a>
+      </Link>
     </nav>
   </header>
 );

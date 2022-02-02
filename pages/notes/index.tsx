@@ -1,11 +1,12 @@
 /** @jsxImportSource theme-ui */
 import Link from 'next/link';
+import dynamic from 'next/dynamic';
 
-const Notes = () => {
-  const notes = new Array(15)
-    .fill(1)
-    .map((e, i) => ({ id: i, title: `This is my note ${i}` }));
+const SponsoredAd = dynamic(() => import('../../src/components/sponsored-ad'), {
+  ssr: false,
+});
 
+const Notes = ({ notes }) => {
   return (
     <div sx={{ variant: 'containers.page' }}>
       <h1>My Notes</h1>
@@ -30,8 +31,20 @@ const Notes = () => {
           </div>
         ))}
       </div>
+      {/* SponsoredAd won't be pre-rendered */}
+      <SponsoredAd />
     </div>
   );
 };
+
+export async function getServerSideProps() {
+  const res = await fetch(`${process.env.API_URL}/api/note/`);
+  const { data } = await res.json();
+  return {
+    props: {
+      notes: data,
+    },
+  };
+}
 
 export default Notes;
