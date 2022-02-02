@@ -1,10 +1,10 @@
 /** @jsxImportSource theme-ui */
 import Link from 'next/link';
-import dynamic from 'next/dynamic';
+// import dynamic from 'next/dynamic';
 
-const SponsoredAd = dynamic(() => import('../../src/components/sponsored-ad'), {
-  ssr: false,
-});
+// const SponsoredAd = dynamic(() => import('../../src/components/sponsored-ad'), {
+//   ssr: false,
+// });
 
 const Notes = ({ notes }) => {
   return (
@@ -32,7 +32,7 @@ const Notes = ({ notes }) => {
         ))}
       </div>
       {/* SponsoredAd won't be pre-rendered */}
-      <SponsoredAd />
+      {/*<SponsoredAd />*/}
     </div>
   );
 };
